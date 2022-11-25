@@ -2,6 +2,7 @@ import * as React from 'react';
 import Flow from '../Flow';
 import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
+import DrawerContent from './DrawerContent'
 
 import './App.css';
 
@@ -28,6 +29,7 @@ function App() {
       >
 
         <h1>Drawer</h1>
+        <DrawerContent/>
       </Drawer>
     </div>
   );

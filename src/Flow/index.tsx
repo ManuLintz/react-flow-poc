@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
 import ReactFlow, {
   Node,
   useNodesState,
@@ -7,6 +7,7 @@ import ReactFlow, {
   Connection,
   Edge,
 } from 'reactflow';
+import {FlowContext} from '../flow.context'
 
 import CustomNode from './CustomNode';
 
@@ -62,12 +63,15 @@ const initialEdges: Edge[] = [
 ];
 
 function Flow() {
+  const {setCurrentFlow} = useContext(FlowContext);
+  setCurrentFlow(initialEdges)
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const onConnect = useCallback(
     (params: Connection | Edge) => setEdges((eds) => addEdge(params, eds)),
     [setEdges]
   );
+
 
   return (
     <div className="Flow">
