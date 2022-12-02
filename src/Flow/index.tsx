@@ -1,6 +1,5 @@
 import ReactFlow, {
   Node,
-  Edge,
 } from 'reactflow';
 import shallow from 'zustand/shallow';
 import useStore from './flow.store';
