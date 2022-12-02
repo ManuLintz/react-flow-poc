@@ -1,13 +1,18 @@
 import { useContext} from 'react';
-import { FlowContext } from '../flow.context'
+import Button from '@mui/material/Button';
+import useStore, { NodeData } from '../Flow/flow.store';
 
 function DrawerContent() {
-const { currentFlow } = useContext(FlowContext);
-console.log(currentFlow)
+  const updateNodeLabel = useStore((state) => state.updateNodeLabel);
+const test = () => 
+{ 
+  console.log("test");
+  updateNodeLabel('1', 'COUCOU !!!');
+}
   return (
     <div>
       <h1>Hey this is some drawer content</h1>
-      <h2>{currentFlow.length}</h2>
+      <Button onClick={() => test()}>Test</Button>
     </div>
   );
 }
