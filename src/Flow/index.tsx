@@ -2,7 +2,6 @@ import ReactFlow, {
   Node,
   Edge,
 } from 'reactflow';
-import {FlowContext} from '../flow.context'
 import shallow from 'zustand/shallow';
 import useStore from './flow.store';
 
@@ -24,11 +23,15 @@ const selector = (state: any) => ({
   onNodesChange: state.onNodesChange,
   onEdgesChange: state.onEdgesChange,
   onConnect: state.onConnect,
+  setSelectedNodeId: state.setSelectedNodeId
 });
 
-function Flow() {
-  const { nodes, edges, onNodesChange, onEdgesChange, onConnect } = useStore(selector, shallow);
-
+function Flow({toggleDrawer}: {toggleDrawer: any}) {
+  const { nodes, edges, onNodesChange, onEdgesChange, onConnect, setSelectedNodeId } = useStore(selector, shallow);
+  const onNodeClick = (event: React.MouseEvent, node: Node) => {
+    setSelectedNodeId(node.id)
+    toggleDrawer()
+  };
 
   return (
     <div className="Flow">
@@ -40,6 +43,7 @@ function Flow() {
         onConnect={onConnect}
         fitView
         nodeTypes={nodeTypes}
+        onNodeClick={onNodeClick}
       />
     </div>
   );

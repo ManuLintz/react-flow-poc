@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       <header className="App-header">React Flow - CRA Example</header>
       <Button onClick={toggleDrawer()}>{state.isDrawerOpen ? "open": "closed"}</Button>
-      <Flow />
+      <Flow toggleDrawer={toggleDrawer()}/>
       <Drawer
         anchor="right"
         open={state.isDrawerOpen}

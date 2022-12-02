@@ -7,7 +7,7 @@ const wrapperStyle = { height: 500 };
 test('renders nodes and edges', () => {
   const { container } = render(
     <div style={wrapperStyle}>
-      <Flow />
+      <Flow toggleDrawer={''}/>
     </div>
   );
 

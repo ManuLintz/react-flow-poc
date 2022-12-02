@@ -22,6 +22,9 @@ type RFState = {
   onNodesChange: OnNodesChange;
   onEdgesChange: OnEdgesChange;
   onConnect: OnConnect;
+  updateNodeLabel: any,
+  selectedNodeId: null | string;
+  setSelectedNodeId: any;
 };
 
 // this is our useStore hook that we can use in our components to get parts of the store and call actions
@@ -55,6 +58,12 @@ const useStore = create<RFState>((set, get) => ({
         return node;
       }),
     });
+  },
+  selectedNodeId: null,
+  setSelectedNodeId: (nodeId: null | string) => {
+    set({
+      selectedNodeId: nodeId
+    })
   },
 }));
 
